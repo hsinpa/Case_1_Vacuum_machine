@@ -1,0 +1,85 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "map/scene_1_front_door.tmx",
+    "expandedProjectPaths": [
+        "tile_sheets/exterior",
+        "single_sprites",
+        ".",
+        "tileset",
+        "map",
+        "tile_sheets"
+    ],
+    "fileStates": {
+        "map/4_Generic_Buildings_48x48.tsx": {
+            "scaleInDock": 0.5,
+            "scaleInEditor": 1
+        },
+        "map/scene_1_front_door.tmx": {
+            "expandedGroupLayers": [
+                4
+            ],
+            "scale": 0.75,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 618.6666666666665,
+                "y": 550.6666666666665
+            }
+        },
+        "single_sprites/single_sprites.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tile_sheets/exterior/3_City_Props_48x48.tsx": {
+            "scaleInDock": 0.75,
+            "scaleInEditor": 1
+        },
+        "tile_sheets/exterior/7_Villas_48x48.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 0.5,
+            "scaleInEditor": 1
+        },
+        "tileset/15_Police_Station_48x48.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 0.5,
+            "scaleInEditor": 1
+        },
+        "tileset/1_Terrains_and_Fences_48x48.tsx": {
+            "scaleInDock": 0.33
+        },
+        "tileset/2_City_Terrains_48x48.tsx": {
+            "scaleInDock": 0.33
+        }
+    },
+    "last.imagePath": "D:/Unity/Case_1_Vacuum_Machine/TiledProject/tile_sheets/exterior",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 48,
+    "map.tileWidth": 48,
+    "openFiles": [
+        "map/scene_1_front_door.tmx",
+        "tile_sheets/exterior/3_City_Props_48x48.tsx",
+        "map/4_Generic_Buildings_48x48.tsx",
+        "tile_sheets/exterior/7_Villas_48x48.tsx",
+        "single_sprites/single_sprites.tsx",
+        "tileset/15_Police_Station_48x48.tsx"
+    ],
+    "project": "vacuum_case_1.tiled-project",
+    "property.type": "bool",
+    "recentFiles": [
+        "tileset/15_Police_Station_48x48.tsx",
+        "single_sprites/single_sprites.tsx",
+        "tile_sheets/exterior/7_Villas_48x48.tsx",
+        "map/4_Generic_Buildings_48x48.tsx",
+        "tile_sheets/exterior/3_City_Props_48x48.tsx",
+        "map/scene_1_front_door.tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 48,
+        "width": 48
+    },
+    "tileset.type": 0
+}
