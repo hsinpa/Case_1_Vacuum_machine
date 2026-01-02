@@ -156,11 +156,24 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: chibi-layered_0
+      name: chibi_1_front_0
       rect:
         serializedVersion: 2
         x: 0
@@ -182,7 +195,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi-layered_1
+      name: chibi_1_side_0
       rect:
         serializedVersion: 2
         x: 16
@@ -204,7 +217,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi-layered_2
+      name: chibi_1_back_0
       rect:
         serializedVersion: 2
         x: 32
@@ -226,7 +239,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi-layered_3
+      name: chibi_1_front_1
       rect:
         serializedVersion: 2
         x: 48
@@ -248,7 +261,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi-layered_4
+      name: chibi_1_side_1
       rect:
         serializedVersion: 2
         x: 64
@@ -270,7 +283,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi-layered_5
+      name: chibi_1_back_1
       rect:
         serializedVersion: 2
         x: 80
@@ -292,7 +305,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi-layered_6
+      name: chibi_1_front_2
       rect:
         serializedVersion: 2
         x: 96
@@ -314,7 +327,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi-layered_7
+      name: chibi_1_side_2
       rect:
         serializedVersion: 2
         x: 112
@@ -336,7 +349,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi-layered_8
+      name: chibi_1_back_2
       rect:
         serializedVersion: 2
         x: 128
@@ -358,7 +371,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi-layered_9
+      name: chibi_2_front_0
       rect:
         serializedVersion: 2
         x: 0
@@ -380,7 +393,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi-layered_10
+      name: chibi_2_side_0
       rect:
         serializedVersion: 2
         x: 16
@@ -402,7 +415,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi-layered_11
+      name: chibi_2_back_0
       rect:
         serializedVersion: 2
         x: 32
@@ -424,7 +437,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi-layered_12
+      name: chibi_2_front_2
       rect:
         serializedVersion: 2
         x: 48
@@ -446,7 +459,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi-layered_13
+      name: chibi_2_side_2
       rect:
         serializedVersion: 2
         x: 64
@@ -468,7 +481,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi-layered_14
+      name: chibi_2_back_1
       rect:
         serializedVersion: 2
         x: 80
@@ -490,7 +503,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi-layered_15
+      name: chibi_2_front_3
       rect:
         serializedVersion: 2
         x: 96
@@ -512,7 +525,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi-layered_16
+      name: chibi_2_side_3
       rect:
         serializedVersion: 2
         x: 112
@@ -534,7 +547,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi-layered_17
+      name: chibi_2_back_2
       rect:
         serializedVersion: 2
         x: 128
@@ -556,7 +569,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi-layered_18
+      name: chibi_3_front_0
       rect:
         serializedVersion: 2
         x: 0
@@ -578,7 +591,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi-layered_19
+      name: chibi_3_side_0
       rect:
         serializedVersion: 2
         x: 16
@@ -600,7 +613,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi-layered_20
+      name: chibi_3_back_0
       rect:
         serializedVersion: 2
         x: 32
@@ -622,7 +635,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi-layered_21
+      name: chibi_3_front_1
       rect:
         serializedVersion: 2
         x: 48
@@ -644,7 +657,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi-layered_22
+      name: chibi_3_side_1
       rect:
         serializedVersion: 2
         x: 64
@@ -666,7 +679,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi-layered_23
+      name: chibi_3_back_1
       rect:
         serializedVersion: 2
         x: 80
@@ -688,7 +701,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi-layered_24
+      name: chibi_3_front_2
       rect:
         serializedVersion: 2
         x: 96
@@ -710,7 +723,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi-layered_25
+      name: chibi_3_side_3
       rect:
         serializedVersion: 2
         x: 112
@@ -732,7 +745,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chibi-layered_26
+      name: chibi_3_back_2
       rect:
         serializedVersion: 2
         x: 128
@@ -769,33 +782,33 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":16.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      chibi-layered_0: 5845835507735083389
-      chibi-layered_1: -1112729367974562650
-      chibi-layered_10: -6002964593973502238
-      chibi-layered_11: 3398754836679955668
-      chibi-layered_12: 3150525731743835657
-      chibi-layered_13: 1268309249231162714
-      chibi-layered_14: 8736200731859618644
-      chibi-layered_15: -8951461031040666709
-      chibi-layered_16: 2330240754134878772
-      chibi-layered_17: -740411767325681505
-      chibi-layered_18: 1877875522428308166
-      chibi-layered_19: 5486073191296581014
-      chibi-layered_2: -997956132385722387
-      chibi-layered_20: 1487620971297919808
-      chibi-layered_21: 1246766397
-      chibi-layered_22: -506120369
-      chibi-layered_23: 1283810671
-      chibi-layered_24: 949206344
-      chibi-layered_25: -1220902157
-      chibi-layered_26: 394062886
-      chibi-layered_3: 6669552830547885389
-      chibi-layered_4: -1897858651997141559
-      chibi-layered_5: -7061416306764853186
-      chibi-layered_6: -315552387713334887
-      chibi-layered_7: 3700627191134711703
-      chibi-layered_8: 4343197933428616938
-      chibi-layered_9: -2678350249093484843
+      chibi_1_back_0: -997956132385722387
+      chibi_1_back_1: -7061416306764853186
+      chibi_1_back_2: 4343197933428616938
+      chibi_1_front_0: 5845835507735083389
+      chibi_1_front_1: 6669552830547885389
+      chibi_1_front_2: -315552387713334887
+      chibi_1_side_0: -1112729367974562650
+      chibi_1_side_1: -1897858651997141559
+      chibi_1_side_2: 3700627191134711703
+      chibi_2_back_0: 3398754836679955668
+      chibi_2_back_1: 8736200731859618644
+      chibi_2_back_2: -740411767325681505
+      chibi_2_front_0: -2678350249093484843
+      chibi_2_front_2: 3150525731743835657
+      chibi_2_front_3: -8951461031040666709
+      chibi_2_side_0: -6002964593973502238
+      chibi_2_side_2: 1268309249231162714
+      chibi_2_side_3: 2330240754134878772
+      chibi_3_back_0: 1487620971297919808
+      chibi_3_back_1: 1283810671
+      chibi_3_back_2: 394062886
+      chibi_3_front_0: 1877875522428308166
+      chibi_3_front_1: 1246766397
+      chibi_3_front_2: 949206344
+      chibi_3_side_0: 5486073191296581014
+      chibi_3_side_1: -506120369
+      chibi_3_side_3: -1220902157
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
