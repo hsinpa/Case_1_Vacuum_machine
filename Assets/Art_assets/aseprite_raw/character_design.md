@@ -1,101 +1,146 @@
-# Character Sprites: Front View
+# Character Sprites
 
-These rules apply to **every** character. They come from the front-view experiment in `example/`, and `example/td_chara_girl.aseprite` is the approved reference sprite. Only the **front view** has been worked out so far. Side and back views will be added here once they are decided.
+Rules for **every** character in a classic top-down RPG style: a tall, slim chibi with a big head, seen from slightly above. Reference sprite: `example/td_chara_girl.aseprite`. Drawing rules (§1–§5) were worked out on the front view; animation (§7–§8) covers front, back and side. All colours come from [palette.md](palette.md).
 
-The style is a classic top-down RPG: a tall, slim chibi with a big head, seen from slightly above.
-
-All colours must come from the project palette, see [palette.md](palette.md).
-
-## 1. Canvas and placement
+## 1. Canvas
 
 | Rule | Value |
 |---|---|
-| Canvas | **48 × 48 px**, RGB, with the palette from [palette.md](palette.md) loaded |
-| Figure height | ≈ 45 px, from the top of the hair (row ≈ 2) to the shoes (row 46) |
-| Ground line | Shoes on **row 46**. Row 47 stays empty |
-| Horizontal centre | Between **x = 23 and x = 24**. Symmetric parts use even widths so they centre exactly |
-| Ground shadow | **None.** Do not draw a shadow under the feet |
+| Canvas | **48 × 48 px**, RGB, project palette loaded |
+| Figure | ≈ 45 px tall: hair top ≈ row 2, shoes on **row 46**, row 47 empty |
+| Centre | Between **x = 23 and 24**. Symmetric parts use even widths |
+| Ground shadow | **None** |
 
 ## 2. Proportions (front)
 
-Row numbers are a guide for a figure of normal height. Keep the ratios when a character is shorter or taller.
+Rows are for a normal-height figure; keep the ratios for shorter or taller ones.
 
 | Part | Rows (≈) | Width | Notes |
 |---|---|---|---|
-| Hair / head | 2 – 21 | Hair cap ≈ 20–22 px | The head is **≈ 45 % of the figure height**. The hair cap is slightly wider than the face |
-| Face | ≈ 14 – 21 visible | ≈ 14–16 px | Sits in the **lower half of the head**, under the hair or bangs |
-| Torso | 22 – 33 | ≈ 12 px | **No wider than the head.** Slim |
-| Lower garment (skirt / trousers / coat hem) | 34 – 40 | 12–14 px | A skirt may flare slightly toward the hem |
-| Legs | 41 – 45 | ≈ 3 px each | Thin, close together, with a 1–2 px gap |
+| Hair / head | 2 – 21 | Hair cap ≈ 20–22 px | Head ≈ **45 %** of figure height; cap slightly wider than face |
+| Face | 14 – 21 visible | ≈ 14–16 px | Lower half of the head, under the bangs |
+| Torso | 22 – 33 | ≈ 12 px | Slim, **never wider than the head** |
+| Lower garment | 34 – 40 | 12–14 px | Skirt may flare slightly at the hem |
+| Legs | 41 – 45 | ≈ 3 px each | Thin, 1–2 px gap |
 | Shoes | 46 | — | 1 px tall, dark |
-| Arms | 23 – 37 | ≈ 3 px | Hang **straight down, close to the body**. Small 2 px hands at about rows 35–36 |
+| Arms | 23 – 37 | ≈ 3 px | Straight down, close to the body; 2 px hands at rows ≈ 35–36 |
 
-## 3. Face
+## 3. Face and hair
 
-- **Shape:** wide and **square**, with straight sides and a flat bottom. Only the **two bottom corners are softened by 1 px**. Never taper the face into an oval or V chin.
-- **Skin:** flat, a single tone with **no shading** on the face.
-- **Eyes:** two dark dots, **2 px wide × 3 px tall**, about **6 px apart**, set low on the face (about 2–3 rows under the bangs).
-- **Mouth:** **always present.** It is a simple **2 px horizontal line** in a muted colour, on the row just above the chin line.
+- **Face shape:** wide and **square** — straight sides, flat bottom, only the **two bottom corners softened 1 px**. Never oval or V-chinned.
+- **Skin:** one flat tone, no shading.
+- **Eyes:** dark, **2 × 3 px**, ≈ **6 px apart**, 2–3 rows under the bangs.
+- **Mouth:** **always present** — a muted **2 px horizontal line** on the row above the chin line.
 - **No** nose, eyebrows or blush.
-- **Outline continuity:** the chin line uses the same colour as the outline next to it (usually the hair outline), so the face edge reads as one line and not as stray dots.
+- **Chin line** uses the same colour as the adjacent outline (usually the hair outline), so the face edge reads as one line.
+- **Hair:** rounded cap; bangs end **just above the eyes**; side locks frame the face. Long hair: locks fall **in front of the shoulders**, the rest goes on `hair_back`. 3 tones: base, shadow (right side and under bangs), dark outline from the same hue.
 
-## 4. Hair
+## 4. Outline, colour and shading
 
-- A rounded cap on top. The hairline or bangs end **just above the eyes**.
-- Side locks frame the face. For long hair, the locks fall **in front of the shoulders** and the rest goes on a separate layer **behind the body**.
-- Use 3 tones: base, one shadow tone (on the right / shadow side and under the bangs), and a dark outline from the same hue family.
+- **Outline:** 1 px around the silhouette, never pure black — `#1a1f2e` (11) for clothing, legs and shoes; darkest hair tone for hair and face edge.
+- **Shading:** flat fills, **one shadow tone** per material (plus an optional, sparing fold highlight). No gradients, dithering or anti-aliasing.
+- **Light:** top-left; shadows go right and underneath.
+- **Colours:** ≈ **10–12** per character, muted, with **one saturated accent** (e.g. a red sash or tie).
+- **Off-palette spec colours:** map each to the **nearest palette entry** and list the mapping. Never add them to the palette.
 
-## 5. Outline, colour and shading
+## 5. Layers
 
-- **Outline:** 1 px, dark, all round the silhouette. Use `#1a1f2e` (11) for clothing, legs and shoes, and the darkest tone of the hair ramp for the hair and face edge. Never pure black.
-- **Shading:** flat fills, with **at most one shadow tone** per material (plus an optional lighter fold tone used sparingly). No gradients, no dithering, no anti-aliasing.
-- **Light:** from the top-left, so shadow tones go on the right side and the underside.
-- **Colour count:** about **10–12 colours** per character.
-- **One accent:** keep the character muted, and give it **one saturated accent** (for example a red sash or tie) as the only strong colour.
-- **Off-palette specs:** if a design spec names hex colours that are not in [palette.md](palette.md), map each one to the **nearest palette entry** and list the mapping. Never add the spec colour to the palette.
-
-## 6. Layers
-
-Each body part goes on its own layer, so animation moves cels instead of redrawing pixels. From bottom to top:
+One part per layer, bottom to top. No reference or sketch layer may remain in a saved file.
 
 | Layer | Contents |
 |---|---|
-| `hair_back` | Long hair behind the body (only if the hair is long) |
-| `leg_back` | The leg further from the viewer |
-| `leg_front` | The leg nearer to the viewer |
-| `body` | Torso, clothing, the lower garment and accessories such as a sash or tie |
-| `arm_back` | The arm on the viewer's right |
-| `arm_front` | The arm on the viewer's left |
-| `head` | Face, eyes, mouth and the chin line |
-| `hair` | Hair cap, bangs and the side locks in front of the shoulders |
+| `hair_back` | Long hair behind the body (long hair only) |
+| `leg_back` | Leg further from the viewer |
+| `leg_front` | Leg nearer the viewer |
+| `body` | Torso, clothing, lower garment, accessories (sash, tie) |
+| `arm_back` | Arm on the viewer's right |
+| `arm_front` | Arm on the viewer's left |
+| `head` | Face, eyes, mouth, chin line |
+| `hair` | Cap, bangs, side locks in front of the shoulders |
 
-No reference or sketch layer may be left in a saved file.
+## 6. Files and tags
 
-## 7. Idle animation (front)
+- One file per character: `td_chara_<name>.aseprite`, every direction as tags.
+- Tags (each becomes the Unity clip for the matching Animator state, e.g. `character_idle_front`): `idle_front`, `idle_back`, `idle_left`, `idle_right`, `move_bottom`, `move_top`, `move_left`, `move_right`. All loop **forward**.
+- **Right-facing tags are optional:** mirror the left frames (Unity flips them); don't draw separate ones.
 
-Use **2 frames** per direction, tagged **`idle_front`**, **`idle_back`**, **`idle_left`** and **`idle_right`** (each tag becomes the Unity clip that feeds the matching Animator state, for example `character_idle_front`). The tags loop forward, forever.
+## 7. Animation rules (all directions)
+
+- **Move cels, never redraw pixels.** Every frame is the rest pose with some layers offset, so volume can't drift and frames can be regenerated. Duplicate frames as **unlinked** copies — linked cels share position, so moving one moves the rest pose too.
+- **Hair always moves with the head**, or the bangs slide over the face and read as a hat.
+- **Uneven timing:** hold the rest/pass pose longer; equal durations look mechanical.
+
+### Idle — 2 frames per direction
 
 | Frame | Duration | Motion |
 |---|---|---|
-| 1. Rest | 500 ms | The base pose |
-| 2. Dip | 250 ms | Head, hair, body and arms all move **down 1 px** together. The legs stay still |
+| 1. Rest | 500 ms | Base pose |
+| 2. Dip | 250 ms | Head, hair, body, arms **down 1 px**; legs still |
 
-A third "recover" frame (arms still 1 px low) was tried and dropped: at 48 px it reads the same as the rest pose.
+A third "recover" frame (arms still 1 px low) was dropped: at 48 px it reads the same as rest.
 
-- **The hair always moves together with the head.** If the hair lags behind the face, the bangs slide over it and the hair reads as a hat.
-- Animate by **moving cels** (`dy = ±1`), never by redrawing pixels, so the frames cannot drift apart.
-- Hold the rest pose longest. Even timing looks mechanical.
+## 8. Walk — 8-frame cycle
 
-## 8. File naming
+### 8.1 Method
 
-- `td_chara_<name>.aseprite`, one file per character, holding every direction as tags.
-- Planned tag names, which match the existing Unity Animator states: `idle_front`, `idle_back`, `idle_left`, `idle_right`, `move_bottom`, `move_top`, `move_left`, `move_right`.
+1. The idle rest frame is the **pass pose (P)**: legs together, arms at rest.
+2. Duplicate it 7 times (unlinked) and apply the offsets below (`+dy` = down, `−dx` = toward facing direction).
+3. Tag the 8 frames, direction **forward** (not ping-pong — the 8 frames already loop).
 
-## 9. Checklist before a character is called done
+Shared rules:
 
-- [ ] `validate` reports 0 off-palette and 0 semi-transparent pixels
-- [ ] The silhouette reads at 1×: big head, slim body, arms close to the sides
-- [ ] The face is square with softened corners, has 2×3 eyes and a 2 px mouth line, and no shading
-- [ ] There is no ground shadow
-- [ ] The parts are on the layers listed in §6, and there is no reference layer
-- [ ] Each `idle_*` tag has 2 frames at 500 / 250 ms, and the hair moves with the head
+- **Body bob:** on step frames (A, B), `body`, `head`, `hair`, `hair_back` move **down 1 px**.
+- **In-betweens move half as far as the step**, so no part jumps more than 1–2 px per frame.
+- **Arms swing opposite the legs.**
+- **Legs stay on the ground line:** a lifted foot goes up (`−dy`); legs never bob down.
+- **Timing:** step **100 ms**, in-between **70 ms**, pass **90 ms** → **660 ms** per cycle. For a different in-game speed, scale all eight by the same factor so feet don't slide.
+
+### 8.2 Front (`move_bottom`) and back (`move_top`)
+
+Legs step up and down in place. Same offsets for both; the back view just has no `head` or `hair_back` cels.
+
+Order: **P → mB → B → mB → P → mA → A → mA**
+
+| Frame | `leg_back` | `leg_front` | `arm_back` | `arm_front` | body, head, hair, hair_back |
+|---|---|---|---|---|---|
+| P | — | — | — | — | — |
+| mB | — | dy −1 | — | dy +1 | — |
+| B | — | dy −2 | — | dy +2 | dy +1 |
+| mB | — | dy −1 | — | dy +1 | — |
+| P | — | — | — | — | — |
+| mA | dy −1 | — | dy +1 | — | — |
+| A | dy −2 | — | dy +2 | — | dy +1 |
+| mA | dy −1 | — | dy +1 | — | — |
+
+### 8.3 Side (`move_left`)
+
+Legs stride front to back; only `arm_front` is visible.
+
+- **Near/far legs use different shades:** `leg_front` `#3f333b` (lighter), `leg_back` `#2b222a` (darker). Otherwise A and B look identical.
+- **Legs really swap:** near leg forward in A, far leg forward in B.
+- **The swinging leg lifts 1 px** (far leg in A → B, near leg in B → A). So P1 and P2 differ and are separate copies.
+
+Order (facing left, `−dx` = forward): **A → m1 → P1 → m2 → B → m3 → P2 → m4**
+
+| Frame | `leg_front` (near) | `leg_back` (far) | `arm_front` | body, head, hair |
+|---|---|---|---|---|
+| A | dx −2 | dx +2 | dx +1, dy +1 | dy +1 |
+| m1 | dx −1 | dx +1, dy −1 | dx +1 | — |
+| P1 | — | dy −1 | — | — |
+| m2 | dx +2 | dx −2, dy −1 | dx −1 | — |
+| B | dx +4 | dx −4 | dx −1, dy +1 | dy +1 |
+| m3 | dx +2, dy −1 | dx −2 | dx −1 | — |
+| P2 | dy −1 | — | — | — |
+| m4 | dx −1, dy −1 | dx +1 | dx +1 | — |
+
+Why ±4 in B but ±2 in A: the rest pose already has the near leg 2 px ahead, so B needs ±4 to match A's spread (≈ 6 px with 3 px legs).
+
+## 9. Done checklist
+
+- [ ] `validate`: 0 off-palette, 0 semi-transparent pixels
+- [ ] Silhouette reads at 1×: big head, slim body, arms close
+- [ ] Face per §3; no ground shadow
+- [ ] Layers per §5; no reference layer
+- [ ] `idle_*`: 2 frames, 500 / 250 ms, hair moves with head
+- [ ] `move_*`: 8 cel-offset frames, forward loop, no jump at loop point
+- [ ] Side view: near/far legs shaded differently; A and B look different

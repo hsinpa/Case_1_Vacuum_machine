@@ -15736,12 +15736,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 6
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -3975148030508345998, guid: 91eeedcb21abe38498261b42208839de, type: 3}
+  m_Sprite: {fileID: 8265383946847776865, guid: 91eeedcb21abe38498261b42208839de, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.88, y: 1.76}
+  m_Size: {x: 0.88, y: 1.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -15762,7 +15762,7 @@ MonoBehaviour:
   m_CategoryHash: 0.009161512
   m_labelHash: 0.0002135298
   m_SpriteKey: 0
-  m_SpriteHash: 0
+  m_SpriteHash: 446710479
 --- !u!114 &1030161087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15888,10 +15888,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.13020031
+    x: -0.02631579
     y: 0
-    width: 0.7395994
-    height: 1
+    width: 1.0526316
+    height: 0.9980507
   near clip plane: 0.03
   far clip plane: 100
   field of view: 60

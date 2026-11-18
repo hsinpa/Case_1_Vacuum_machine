@@ -53,6 +53,31 @@ MonoBehaviour:
       m_Sprite: {fileID: 0}
       m_FromMain: 0
       m_SpriteOverride: {fileID: 0}
+    - m_Name: chibi_1_back_4
+      m_Hash: 79688040
+      m_Sprite: {fileID: 0}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 0}
+    - m_Name: chibi_1_back_5
+      m_Hash: 867746302
+      m_Sprite: {fileID: 0}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 0}
+    - m_Name: chibi_1_back_6
+      m_Hash: 716279876
+      m_Sprite: {fileID: 0}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 0}
+    - m_Name: chibi_1_back_7
+      m_Hash: 498507986
+      m_Sprite: {fileID: 0}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 0}
+    - m_Name: chibi_1_back_8
+      m_Hash: 218742083
+      m_Sprite: {fileID: 0}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 0}
     - m_Name: chibi_1_front_1
       m_Hash: 834923348
       m_Sprite: {fileID: 6669552830547885389, guid: 24baf14f213700b429f35a038539fc37, type: 3}
@@ -65,6 +90,31 @@ MonoBehaviour:
       m_SpriteOverride: {fileID: -315552387713334887, guid: 24baf14f213700b429f35a038539fc37, type: 3}
     - m_Name: chibi_1_front_3
       m_Hash: 533564024
+      m_Sprite: {fileID: 0}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 0}
+    - m_Name: chibi_1_front_4
+      m_Hash: 27860955
+      m_Sprite: {fileID: 0}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 0}
+    - m_Name: chibi_1_front_5
+      m_Hash: 917385037
+      m_Sprite: {fileID: 0}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 0}
+    - m_Name: chibi_1_front_6
+      m_Hash: 799506167
+      m_Sprite: {fileID: 0}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 0}
+    - m_Name: chibi_1_front_7
+      m_Hash: 413159009
+      m_Sprite: {fileID: 0}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 0}
+    - m_Name: chibi_1_front_8
+      m_Hash: 136270832
       m_Sprite: {fileID: 0}
       m_FromMain: 0
       m_SpriteOverride: {fileID: 0}
@@ -83,8 +133,33 @@ MonoBehaviour:
       m_Sprite: {fileID: 0}
       m_FromMain: 0
       m_SpriteOverride: {fileID: 0}
+    - m_Name: chibi_1_side_4
+      m_Hash: 722239012
+      m_Sprite: {fileID: 0}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 0}
+    - m_Name: chibi_1_side_5
+      m_Hash: 470503090
+      m_Sprite: {fileID: 0}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 0}
+    - m_Name: chibi_1_side_6
+      m_Hash: 84025096
+      m_Sprite: {fileID: 0}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 0}
+    - m_Name: chibi_1_side_7
+      m_Hash: 839200670
+      m_Sprite: {fileID: 0}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 0}
+    - m_Name: chibi_1_side_8
+      m_Hash: 582627855
+      m_Sprite: {fileID: 0}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 0}
     m_FromMain: 0
-    m_EntryOverrideCount: 9
+    m_EntryOverrideCount: 24
   m_PrimaryLibraryGUID: 
-  m_ModificationHash: 639305150812266330
+  m_ModificationHash: 639306461214636379
   m_Version: 1
