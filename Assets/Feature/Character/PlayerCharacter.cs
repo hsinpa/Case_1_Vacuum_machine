@@ -1,116 +1,148 @@
-using DG.Tweening;
+using System.Collections.Generic;
+using Hsinpa.Map;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 namespace Hsinpa.Character
 {
+    /// <summary>
+    /// The character the player controls: turns input into orders for its GridAgent,
+    /// and mirrors the agent's state onto the animator.
+    /// Keyboard steps one cell at a time; a click walks to the clicked cell, or beside it.
+    /// </summary>
+    [RequireComponent(typeof(GridAgent))]
     public class PlayerCharacter : MonoBehaviour
     {
         [SerializeField]
         Animator _character_animator;
 
-        [SerializeField, Range(0.1f, 10f)]
-        private float _move_speed = 1f;
+        [SerializeField]
+        TileMarkIndicator _targetTileSprite;
 
-        InputSystem_Actions.PlayerActions _playerActions;
-        int input_axis_x;
-        int input_axis_y;
-        Vector2 input_axis;
+        PlayerInputReader _input;
+        GridAgent _agent;
+        CharacterAnimationView _view;
 
-        Vector2Int current_position;
-        Vector2 offset_position = new Vector2(0.5f, 0.5f);
-        Vector2Int target_position;
-        Vector3 real_target_position;
-        bool is_idle = true;
+        // Reused for UI hit tests so a click allocates nothing.
+        PointerEventData _uiPointer;
+        EventSystem _uiPointerOwner;
+        readonly List<RaycastResult> _uiHits = new List<RaycastResult>();
+        bool _warnedNoCamera;
+
+        // Seconds a lone key waits for a second one before stepping straight. See IsWaitingForSecondKey.
+        const float DiagonalGraceTime = 0.06f;
+        float _keyHeldTime;
+
+        void Awake()
+        {
+            _agent = GetComponent<GridAgent>();
+        }
 
         void Start()
-        { 
-            var input_actions = new InputSystem_Actions();
-            _playerActions = input_actions.Player;
-            _playerActions.Enable();
-
-            _playerActions.Move.performed += OnCharacterMovePerform;
-            _playerActions.Move.canceled += OnCharacterMoveCancel;
-
-            current_position = new Vector2Int(Mathf.RoundToInt(transform.position.x - offset_position.x), Mathf.RoundToInt(transform.position.z - offset_position.y));
-            transform.position = new Vector3(current_position.x + offset_position.x, current_position.y + offset_position.y, 0);
+        {
+            _input = new PlayerInputReader();
+            _view = new CharacterAnimationView(_character_animator);
         }
 
         void Update()
         {
-            if (is_idle) return;
+            // Keyboard wins over a click in the same frame. TryStep cancels any path,
+            // and is ignored while a step is still in progress.
+            Vector2Int direction = _input.Direction;
+            if (direction == Vector2Int.zero) _keyHeldTime = 0f;
+            else _keyHeldTime += Time.deltaTime;
 
-            var move_direction = (real_target_position - transform.position).normalized;
-            var velocity = move_direction *_move_speed * Time.deltaTime;
-            transform.position = new Vector3(transform.position.x + velocity.x, transform.position.y + velocity.y, 0);
-
-            if (Vector2.Distance(transform.position, real_target_position) < 0.05f)
+            if (direction != Vector2Int.zero)
             {
-                current_position.Set(Mathf.RoundToInt(target_position.x), Mathf.RoundToInt(target_position.y));
-                transform.position = real_target_position;
-                is_idle = true;
-                CheckIfCharacterContinueMoving();
-                return;
+                if (!IsWaitingForSecondKey(direction)) _agent.TryStep(direction);
             }
-        }
-
-        void OnCharacterMovePerform(InputAction.CallbackContext context)
-        {      
-            input_axis = context.ReadValue<Vector2>();
-
-            input_axis_x = Mathf.RoundToInt(input_axis.x);
-            input_axis_y = Mathf.RoundToInt(input_axis.y);
-
-            CheckIfCharacterContinueMoving();
-        }
-
-        void OnCharacterMoveCancel(InputAction.CallbackContext context)
-        {   
-            input_axis = context.ReadValue<Vector2>();
-            input_axis_x = Mathf.RoundToInt(input_axis.x);
-            input_axis_y = Mathf.RoundToInt(input_axis.y);
-        }
-
-        void CharacterAnimationPoseChange()
-        {
-            _character_animator.SetFloat("Axis_X", input_axis_x);
-            _character_animator.SetFloat("Axis_Y", input_axis_y);
-        }
-
-        void CheckIfCharacterContinueMoving()
-        {
-            if (input_axis.magnitude <= 0.1)
+            else if (_input.TryGetClick(out Vector2 screenPosition)
+                     && !IsOverUI(screenPosition)
+                     && TryScreenToCell(screenPosition, out Vector2Int cell))
             {
-                is_idle = true;
-                _character_animator.SetFloat("Speed", 0);
-                return;
+                _agent.MoveTo(cell);
+                MarkTargetTile(cell);
             }
 
-            if (!is_idle) return;
+            _view.Face(_agent.Facing);
+            _view.SetMoving(_agent.IsMoving);
+        }
 
-            target_position.Set(current_position.x, current_position.y);
+        void OnDestroy()
+        {
+            _input?.Dispose();
+        }
 
-            if (input_axis_x > 0.9f || input_axis_x < - 0.9f)
+        /// <summary>
+        /// Two keys for a diagonal rarely land on the same frame. Starting from standing still, a single
+        /// held key waits a moment for a second one, so the first step is not a straight step by mistake.
+        /// Once keys have been held past the window, steps follow at once until every key is released.
+        /// </summary>
+        bool IsWaitingForSecondKey(Vector2Int direction)
+        {
+            bool isDiagonal = direction.x != 0 && direction.y != 0;
+            return !isDiagonal && !_agent.IsMoving && _keyHeldTime < DiagonalGraceTime;
+        }
+
+        /// <summary>
+        /// Moves the marker to the centre of the clicked cell so the player sees where they clicked.
+        /// </summary>
+        void MarkTargetTile(Vector2Int cell)
+        {
+            if (_targetTileSprite == null) return;
+
+            _targetTileSprite.Blink(_agent.Map.CellCenterToWorld(cell));
+        }
+
+        /// <summary>
+        /// Clicks on dialogue boxes and buttons belong to the UI, not the world.
+        /// Raycasts the UI at this exact click position instead of using IsPointerOverGameObject,
+        /// which reports the EventSystem's last update and is wrong on the first frame of a touch.
+        /// </summary>
+        bool IsOverUI(Vector2 screenPosition)
+        {
+            EventSystem eventSystem = EventSystem.current;
+            if (eventSystem == null) return false;
+
+            if (_uiPointer == null || _uiPointerOwner != eventSystem)
             {
-                target_position.x = current_position.x + input_axis_x;
-            } else
-            {
-                target_position.y = current_position.y + input_axis_y ;
+                _uiPointer = new PointerEventData(eventSystem);
+                _uiPointerOwner = eventSystem;
             }
 
-            GetRealPosition(target_position, ref real_target_position);
-            CharacterAnimationPoseChange();
-
-            _character_animator.SetFloat("Speed", 1);
-            is_idle = false;
+            _uiPointer.position = screenPosition;
+            eventSystem.RaycastAll(_uiPointer, _uiHits);
+            return _uiHits.Count > 0;
         }
 
-        Vector3 GetRealPosition(Vector2Int in_game_position, ref Vector3 source)
+        /// <summary>
+        /// Casts the screen point onto the grid's plane. Works for perspective and orthographic cameras,
+        /// unlike ScreenToWorldPoint, which needs the depth to be right for perspective.
+        /// </summary>
+        bool TryScreenToCell(Vector2 screenPosition, out Vector2Int cell)
         {
-            source.x = Mathf.RoundToInt(in_game_position.x) + offset_position.x;
-            source.y = Mathf.RoundToInt(in_game_position.y) + offset_position.y;
-            source.z = 0;
-            return source;
+            cell = default;
+
+            Camera camera = Camera.main;
+            if (camera == null)
+            {
+                if (!_warnedNoCamera)
+                {
+                    Debug.LogWarning("Click-to-move needs a camera tagged MainCamera; clicks are ignored until there is one.", this);
+                    _warnedNoCamera = true;
+                }
+                return false;
+            }
+            if (_agent.Map == null) return false;
+
+            Transform grid = _agent.Map.transform;
+            var gridPlane = new Plane(grid.forward, grid.position);
+            Ray ray = camera.ScreenPointToRay(screenPosition);
+
+            if (!gridPlane.Raycast(ray, out float distance)) return false;
+
+            cell = _agent.Map.WorldToCell(ray.GetPoint(distance));
+            return true;
         }
-    }   
+    }
 }
