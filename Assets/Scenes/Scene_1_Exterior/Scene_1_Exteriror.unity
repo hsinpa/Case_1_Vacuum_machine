@@ -15981,15 +15981,15 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: -0.15595075
+    x: 0.028459273
     y: 0
-    width: 1.3132695
-    height: 0.9975669
+    width: 0.9421001
+    height: 0.99825484
   near clip plane: 0.03
   far clip plane: 100
   field of view: 60
   orthographic: 1
-  orthographic size: 4.2708335
+  orthographic size: 5.958333
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -17516,7 +17516,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1254, y: 43.47171}
+  m_AnchoredPosition: {x: 1164, y: 43.47171}
   m_SizeDelta: {x: 0, y: 82.8883}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!1 &881285306851382106
@@ -17565,7 +17565,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: Say something
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1251939bec2a3a3458d7cb6afa6f0ca0, type: 2}
   m_sharedMaterial: {fileID: -5298412261966294426, guid: 1251939bec2a3a3458d7cb6afa6f0ca0, type: 2}
@@ -17770,7 +17770,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Hsinpa.UIWidget.DialogueUIWidget
   canvas_group: {fileID: 8540829597310084651}
-  header_object: {fileID: 4566747201333708496}
+  header_object: {fileID: 205303554750241962}
   header_text: {fileID: 7908814235405259567}
   left_avatar_img: {fileID: 1509537247}
   right_avatar_img: {fileID: 2130875750}
