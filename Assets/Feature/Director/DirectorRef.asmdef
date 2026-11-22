@@ -1,0 +1,22 @@
+{
+    "name": "DirectorRef",
+    "rootNamespace": "Hsinpa.Director",
+    "references": [
+        "CharacterRef",
+        "GridMap",
+        "DialogueRef",
+        "Ink-Libraries",
+        "Ink",
+        "Unity.InputSystem",
+        "InputRef"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e194ae093245a884b8e391eb8a0d441f, type: 3}
+  m_Name: Scene_1_Exterior_Dialogue
+  m_EditorClassIdentifier: DialogueRef::Hsinpa.Dialogue.SceneDialogueAsset
+  _inkFiles:
+  - {fileID: 6231892579173505729, guid: 786fd1d6a7db8ef4facf54b4c70890a3, type: 3}

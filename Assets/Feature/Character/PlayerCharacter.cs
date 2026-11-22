@@ -44,7 +44,25 @@ namespace Hsinpa.Character
             _view = new CharacterAnimationView(_character_animator);
         }
 
+        /// <summary>
+        /// False while a cutscene drives the character. The animator keeps following the agent either way,
+        /// so walks ordered by the cutscene animate exactly like player walks.
+        /// </summary>
+        public bool InputEnabled { get; set; } = true;
+
+        /// <summary>For Signal Receivers and UnityEvents, which cannot set properties.</summary>
+        public void SetInputEnabled(bool enabled) => InputEnabled = enabled;
+
         void Update()
+        {
+            if (InputEnabled) ReadInput();
+            else _keyHeldTime = 0f;
+
+            _view.Face(_agent.Facing);
+            _view.SetMoving(_agent.IsMoving);
+        }
+
+        void ReadInput()
         {
             // Keyboard wins over a click in the same frame. TryStep cancels any path,
             // and is ignored while a step is still in progress.
@@ -63,9 +81,6 @@ namespace Hsinpa.Character
                 _agent.MoveTo(cell);
                 MarkTargetTile(cell);
             }
-
-            _view.Face(_agent.Facing);
-            _view.SetMoving(_agent.IsMoving);
         }
 
         void OnDestroy()

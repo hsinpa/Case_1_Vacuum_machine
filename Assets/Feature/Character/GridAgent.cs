@@ -52,6 +52,9 @@ namespace Hsinpa.Character
         int _blockedRetries;
 
         public Vector2Int CurrentCell => _mover?.CurrentCell ?? default;
+
+        /// <summary>False until Start has run (e.g. while a cutscene keeps the character inactive). Orders are ignored until then.</summary>
+        public bool IsReady => _mover != null;
         public Vector2Int Facing { get; private set; } = Vector2Int.down;
         public AgentState State { get; private set; } = AgentState.Idle;
 
@@ -170,6 +173,36 @@ namespace Hsinpa.Character
 
         /// <summary>Drops the current path. A step in progress still finishes.</summary>
         public void Stop() => ClearPath();
+
+        /// <summary>Turns without moving. Ignored for a zero direction.</summary>
+        public void Face(Vector2Int direction)
+        {
+            if (direction != Vector2Int.zero) Facing = direction;
+        }
+
+        /// <summary>
+        /// Places the character on a cell at once, cancelling any path or step, and keeps the grid's
+        /// occupancy in sync (never set transform.position directly). Works before Start too, e.g. on a
+        /// character a cutscene has not activated yet: the mover claims the cell when it is created.
+        /// A non-zero facing turns the character. Returns false when the cell is blocked or taken.
+        /// </summary>
+        public bool Warp(Vector2Int cell, Vector2Int facing = default)
+        {
+            if (_mover == null)
+            {
+                GridMap2D map = gridMap != null ? gridMap : GridMap2D.Active;
+                if (map == null || !map.Graph.IsFree(cell, this)) return false;
+                transform.position = GridMover.CellToPivot(map.Layout, cell);
+            }
+            else
+            {
+                if (!_mover.Warp(cell, claim: isActiveAndEnabled)) return false;
+                ClearPath();
+            }
+
+            Face(facing);
+            return true;
+        }
 
         #endregion
 

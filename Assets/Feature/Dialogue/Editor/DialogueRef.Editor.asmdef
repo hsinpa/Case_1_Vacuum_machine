@@ -1,0 +1,19 @@
+{
+    "name": "DialogueRef.Editor",
+    "rootNamespace": "Hsinpa.Dialogue.Editor",
+    "references": [
+        "DialogueRef",
+        "Ink"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

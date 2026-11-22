@@ -1,6 +1,10 @@
 ﻿<Solution>
+  <Project Path="DirectorRef.csproj" />
   <Project Path="GridMap.csproj" />
   <Project Path="CharacterRef.csproj" />
-  <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="UIWidgetRef.csproj" />
   <Project Path="InputRef.csproj" />
+  <Project Path="GridMap.Editor.csproj" />
+  <Project Path="DialogueRef.Editor.csproj" />
+  <Project Path="DialogueRef.csproj" />
 </Solution>

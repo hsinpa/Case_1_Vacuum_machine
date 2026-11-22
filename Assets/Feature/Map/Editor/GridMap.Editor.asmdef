@@ -1,0 +1,18 @@
+{
+    "name": "GridMap.Editor",
+    "rootNamespace": "Hsinpa.Map.Editor",
+    "references": [
+        "GridMap"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

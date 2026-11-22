@@ -1,19 +1,31 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Hsinpa.UIWidget
 {
     public class DialogueUIWidget : MonoBehaviour
     {
+        public enum AvatarSide
+        {
+            Left, Right
+        }
+
         [SerializeField]
-        private GameObject header_object;
+        private CanvasGroup canvas_group;
+
+        [SerializeField]
+        private RectTransform header_object;
 
         [SerializeField]
         private TextMeshProUGUI header_text;
 
         [SerializeField]
-        private GameObject avatar_holder;
+        private Image left_avatar_img;
+
+        [SerializeField]
+        private Image right_avatar_img;
 
         [SerializeField]
         private TextMeshProUGUI dialogue_text;
@@ -30,11 +42,11 @@ namespace Hsinpa.UIWidget
         {
             if (string.IsNullOrEmpty(header))
             {
-                header_object.SetActive(false);
+                header_object.gameObject.SetActive(false);
             }
             else
             {
-                header_object.SetActive(true);
+                header_object.gameObject.SetActive(true);
                 header_text.text = header;
             }
         }
@@ -64,15 +76,28 @@ namespace Hsinpa.UIWidget
             }
         }
 
-        public void SetAvatar(Sprite avatar)
+        public void SetAvatar(Sprite avatar, AvatarSide avatarSide = AvatarSide.Left)
         {
+
+
+            if (avatarSide == AvatarSide.Left)
+            {
+                header_object.anchoredPosition = new Vector2(84, header_object.anchoredPosition.y);
+            } else
+            {
+                header_object.anchoredPosition = new Vector2(1164, header_object.anchoredPosition.y);
+            }
+
             if (avatar == null)
             {
-                avatar_holder.SetActive(false);
+                left_avatar_img.gameObject.SetActive(false);
+                right_avatar_img.gameObject.SetActive(false);
                 return;
             }
 
-            avatar_holder.SetActive(true);
+            var side_avatar = (avatarSide == AvatarSide.Left) ? left_avatar_img : right_avatar_img;
+            side_avatar.sprite = avatar;
+            side_avatar.gameObject.SetActive(true);
         }
 
         private void Update()
@@ -90,6 +115,20 @@ namespace Hsinpa.UIWidget
                 record_animate_time = Time.time + text_animate_interval;
             }
         }
+
+        public void Show(bool is_show=true)
+        {
+            // Scene teardown destroys objects in no set order; skip if any part of the box is already gone.
+            if (IsTornDown()) return;
+
+            Clear();
+            canvas_group.alpha = (is_show) ? 1 : 0;
+        }
+
+        // Unity's == null is also true for destroyed objects.
+        private bool IsTornDown() =>
+            this == null || canvas_group == null || header_object == null || header_text == null
+            || left_avatar_img == null || right_avatar_img == null || dialogue_text == null;
 
         public void Clear()
         {

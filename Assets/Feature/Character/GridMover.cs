@@ -103,9 +103,30 @@ namespace Hsinpa.Character
             return _graph.TryOccupy(CurrentCell, _owner);
         }
 
-        Vector3 CellToWorld(Vector2Int cell)
+        /// <summary>
+        /// Moves straight to a cell, cancelling any step in progress. Returns false, and does nothing,
+        /// when the cell is blocked or held by someone else. With claim false (owner disabled), the cell
+        /// is not held; Reoccupy claims it on re-enable.
+        /// </summary>
+        public bool Warp(Vector2Int cell, bool claim)
         {
-            Vector3 world = _grid.CellToWorld(new Vector3Int(cell.x, cell.y, 0)) + PivotOffset;
+            if (!_graph.IsFree(cell, _owner)) return false;
+
+            ReleaseAll();
+            CurrentCell = cell;
+            TargetCell = cell;
+            _transform.position = CellToWorld(cell);
+
+            if (claim) _graph.TryOccupy(cell, _owner);
+            return true;
+        }
+
+        Vector3 CellToWorld(Vector2Int cell) => CellToPivot(_grid, cell);
+
+        /// <summary>World position of a character's pivot when it stands on the cell.</summary>
+        public static Vector3 CellToPivot(GridLayout grid, Vector2Int cell)
+        {
+            Vector3 world = grid.CellToWorld(new Vector3Int(cell.x, cell.y, 0)) + PivotOffset;
             world.z = 0;
             return world;
         }

@@ -1,0 +1,17 @@
+{
+    "name": "DialogueRef",
+    "rootNamespace": "Hsinpa.Dialogue",
+    "references": [
+        "Ink-Libraries",
+        "Ink"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
